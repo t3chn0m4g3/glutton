@@ -60,6 +60,8 @@ func (g *Glutton) HandleHTTP(ctx context.Context, conn net.Conn) (err error) {
 		zap.String("path", req.URL.EscapedPath()),
 		zap.String("method", req.Method),
 		zap.String("query", req.URL.Query().Encode()),
+		zap.String("src_ip", host),
+		zap.String("src_port", port),
 	)
 	if req.ContentLength > 0 {
 		defer req.Body.Close()
